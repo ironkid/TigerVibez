@@ -1,0 +1,195 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url(pictures/HPH.png);
+    background-size: cover;
+    background-color: black;
+    animation: fadeIn 1s ease-in-out;
+}
+/* Navbar styling  (upper bar)*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: white; /* Dark background for better contrast */
+    border: 2px solid #ffcc00; /* Border color (change as needed) */
+    border-radius: 10px; /* Optional: Makes the border rounded */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds depth */
+    color: white; /* Text color */
+}
+.logo img{
+    width: 100px;
+}
+.column {
+    display: flex;
+    gap: 15px;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align to the left */
+    gap: 15px; /* Vertical spacing between buttons */
+  }
+/* buttons */
+.feri{
+    padding: 15px 50px; /*size of block*/
+    font-size: 1rem;
+    background-color: rgb(15, 131, 44);
+    color: white;
+    border-radius: 500px;/* curve of blocks*/
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    opacity: 0;
+    animation: slideIn 1s ease forwards;
+}
+.feri:hover{
+    background-color: #0077f7;
+    transform: translateX(15px);
+}
+/* Title styling */
+ h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin: 20px 0;
+    animation: colorChange 3s infinite;
+}
+/* Keyframes for color cycling */
+@keyframes colorChange {
+    0% {
+        color: blue;
+    }
+    25% {
+        color: green;
+    }
+    50% {
+        color: lightgreen;
+    }
+    75% {
+        color: orange;
+    }
+    100% {
+        color: blueviolet;
+    }
+}
+
+/* Search container styling */
+.search {
+    display: flex;
+    align-items: left;
+    padding: 8px 15px;
+    box-sizing: border-box;
+    border: 1px solid orange;
+    border-radius: 20px;
+}
+.search input{
+    width: 100%;
+    outline: none;
+    border: 0;
+    color: #222;
+    background: transparent;
+    font-size: 14px;
+    margin-right: 10px;
+}
+/* Keyframes for color cycling */
+@keyframes colorChange {
+    0% { color: blue; }
+    4% { color: crimson; }
+    8% { color: darkorange; }
+    12% { color: mediumseagreen; }
+    16% { color: darkviolet; }
+    20% { color: green; }
+    24% { color: coral; }
+    28% { color: gold; }
+    32% { color: deeppink; }
+    36% { color: steelblue; }
+    40% { color: lightgreen; }
+    44% { color: darkred; }
+    48% { color: mediumblue; }
+    52% { color: yellowgreen; }
+    56% { color: orange; }
+    60% { color: violet; }
+    64% { color: indigo; }
+    68% { color: tomato; }
+    72% { color: mediumorchid; }
+    76% { color: yellow; }
+    80% { color: fuchsia; }
+    84% { color: teal; }
+    88% { color: chartreuse; }
+    92% { color: lightskyblue; }
+    96% { color: hotpink; }
+    100% { color: blueviolet; }
+}
+/* Keyframe for fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframe for button slide-in effect */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* Search button */
+.search-button {
+    background-color: #0077f7;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #005bb5;
+}
+canvas {
+    display: block;
+    position: absolute;
+    top: 70px; /* Space for the navbar */
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+/* Help desk / tech support code
+/* Container to center the button */
+.help-desk-btn-container {
+    text-align: center; /* Centers the button horizontally */
+    margin-top: 20px; /* Space above the button */
+}
+
+/* Green button styling */
+.help-desk-btn {
+    display: inline-block;
+    padding: 15px 50px;
+    background-color: #0f832c; /* Green background */
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    text-decoration: none; /* Remove underline from the link */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.help-desk-btn:hover {
+    background-color: #0077f7; /* Change to blue on hover */
+    transform: translateY(-5px); /* Slight lift effect */
+}

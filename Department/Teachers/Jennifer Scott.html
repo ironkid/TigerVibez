@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jennifer  Scott</title>
+    <link rel="stylesheet" href="JohnDoe.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1><a href="tigervibez.html">TigerVibez</a></h1>
+        <section>
+            <div class="search-container">
+                <input type="text" class="search-bar" placeholder="Search...">
+                <button class="search-button" onclick="searchFile()">Search</button>
+            </div>
+        </section>
+    </nav>
+    <div class="container">
+        <div class="name">Jennifer  Scott</div>
+        <div class="description">Hello, my name is Jennifer  Scott and I teach in the Behavioral and Environmental Health.</div>
+    </div>
+
+    <!-- Pie Chart Container -->
+    <div class="pie-chart-container">
+        <div class="pie-chart" id="pieChart">0%</div>
+        
+        <!-- Labels for Pass and Fail -->
+        <div class="pie-chart-labels">
+            <div class="label-item">
+                <div class="color-box" style="background-color: green;"></div>
+                Pass
+            </div>
+            <div class="label-item">
+                <div class="color-box" style="background-color: red;"></div>
+                Fail
+            </div>
+        </div>
+    </div>
+
+    <!-- Comment Section -->
+    <div class="comment-section">
+        <h2>Reviews</h2>
+        <div class="overall" id="overallRating">Overall Rating: No ratings yet</div>
+        <textarea class="comment-box" id="commentInput" placeholder="Leave a comment..."></textarea>
+
+        <!-- Star Rating System -->
+        <div class="star-rating">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+        
+        <button class="submit-comment" onclick="submitComment()">Post Comment</button>
+        <div class="comments-list" id="commentsList"></div>
+    </div>
+
+    <script>
+        let selectedRating = 0;
+        let ratings = []; // Initialize ratings array
+
+        // Handle star selection
+        document.querySelectorAll('.star').forEach(star => {
+            star.addEventListener('click', function() {
+                selectedRating = parseInt(this.getAttribute('data-value'));
+                updateStars();
+            });
+
+            star.addEventListener('mouseover', function() {
+                const value = parseInt(this.getAttribute('data-value'));
+                highlightStars(value);
+            });
+
+            star.addEventListener('mouseout', function() {
+                updateStars();
+            });
+        });
+
+        function highlightStars(rating) {
+            document.querySelectorAll('.star').forEach(star => {
+                if (parseInt(star.getAttribute('data-value')) <= rating) {
+                    star.style.color = 'gold';
+                } else {
+                    star.style.color = '#ccc';
+                }
+            });
+        }
+
+        function updateStars() {
+            document.querySelectorAll('.star').forEach(star => {
+                if (parseInt(star.getAttribute('data-value')) <= selectedRating) {
+                    star.classList.add('selected');
+                } else {
+                    star.classList.remove('selected');
+                }
+            });
+        }
+
+        function updateOverallRating() {
+            if (ratings.length === 0) {
+                document.getElementById("overallRating").innerText = "Overall Rating: No ratings yet";
+                return;
+            }
+            let avgRating = (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(1);
+            document.getElementById("overallRating").innerHTML = `Overall Rating: ${avgRating} ⭐`;
+        }
+
+        function generateRandomPie() {
+            let passPercentage = Math.floor(Math.random() * 101); // Random 0-100
+            let failPercentage = 100 - passPercentage;
+            
+            let pieChart = document.getElementById("pieChart");
+            pieChart.innerText = passPercentage + "%";
+
+            pieChart.style.background = `conic-gradient(
+                green 0deg ${passPercentage * 3.6}deg,  
+                red ${passPercentage * 3.6}deg 360deg
+            )`;
+
+            // Animate color change
+            pieChart.style.transform = "scale(1.1)";
+            setTimeout(() => pieChart.style.transform = "scale(1)", 300);
+        }
+
+        function submitComment() {
+            let commentInput = document.getElementById("commentInput");
+            let commentsList = document.getElementById("commentsList");
+
+            if (commentInput.value.trim() !== "") {
+                let newComment = document.createElement("div");
+                newComment.classList.add("comment");
+                newComment.innerHTML = `
+                    <p><strong>Rating:</strong> <span class="rating">${"&#9733;".repeat(selectedRating)}</span></p>
+                    <p>${commentInput.value}</p>
+                `;
+                commentsList.appendChild(newComment);
+                ratings.push(selectedRating); // Add the selected rating to the ratings array
+                updateOverallRating(); // Update the overall rating
+                commentInput.value = ""; // Clear input
+                selectedRating = 0; // Reset selected rating
+                updateStars(); // Reset stars
+            } else {
+                alert("Please enter a comment.");
+            }
+        }
+
+        // Generate the pie chart when the page loads
+        window.onload = generateRandomPie;
+
+    </script>
+    <footer>
+        <p> <a href="tigervibez.html" target="BLANK">homePage</a></p>
+
+</body>
+</html>

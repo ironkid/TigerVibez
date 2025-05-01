@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Support - TigerVibez</title>
+    <link rel="stylesheet" href="Login.css">
+</head>
+<body>
+    <div class="login-box">
+        <div class="login-header">
+            <header>Tech Support</header>
+        </div>
+    </div>
+ <form id="form">
+    <div class="input-box">
+      <label for="name"></label>
+      <input type="text" id="name" class="input-field" name="name" placeholder="Name" autocomplete="off" required>
+    </div>
+    <div class="input-box">
+      <label for="time"></label>
+      <input type="text" id="time" class="input-field" name="time" placeholder="Time" autocomplete="off" required>
+    </div>
+    <div class="input-box">
+      <label for="message"></label>
+      <input type="text" id="message" class="input-field" name="message" placeholder="Message" autocomplete="off" required>
+    </div>
+    <div class="input-box">
+      <label for="title"></label>
+      <input type="text" id="title" class="input-field" name="title" placeholder="Title" autocomplete="off" required>
+    </div>
+    <div class="input-box">
+      <label for="email"></label>
+      <input type="text"  id="email" class="input-field" name="email" placeholder="Email" autocomplete="off" required>
+    </div>
+  
+   
+  
+<div class="input-submit">
+    <button type="submit" id="button" value="Send Email" class="submit-btn">Send Email</button></div>
+  </form>
+  
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  
+  <script type="text/javascript">
+    emailjs.init('E8rFjUCnUxmpwcPoV')
+  
+    const btn = document.getElementById('button');
+  
+    // Handle form submission
+    document.getElementById('form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+  
+        btn.value = 'Sending...'; // Change the button text while sending
+  
+        const serviceID = 'default_service';
+        const templateID = 'template_jxo49u5';
+  
+        // Send the form data using EmailJS
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                btn.value = 'Send Email'; // Reset button text after sending
+                alert('Hello,\nWe have received your new tech support request.\nWe will respond to you as soon as possible.\n\nBest regards'); // Show success message
+            }, (err) => {
+                btn.value = 'Send Email'; // Reset button text if error occurs
+                alert('Failed to send: ' + JSON.stringify(err)); // Show error message
+            });
+    });
+  </script>
+</body>
+</html>

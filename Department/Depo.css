@@ -1,0 +1,261 @@
+*
+{
+  margin: 0;
+  padding: 0;
+
+}
+.container{
+    position: relative;
+    width: 200vh;
+    height: 250vh;
+    overflow: hidden;
+  }
+  .bubbles{
+    position: relative;
+    display: flex;
+  }
+  .bubbles span{
+    position: relative;
+    width: 300px;
+    height: 30px;
+    background: #4fc3dc;
+    margin: 0 4px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px #4fc3dc44,
+    0 0 50px #4fc3dc,
+    0 0 100px #4fc3dc;
+    animation: animate 15s linear infinite;
+    animation-duration: calc(125s/ var(--i));
+  }
+  .bubbles span:nth-child(even){
+    background: #ff2d75;
+    box-shadow: 0 0 0 10px #4fc3dc44,
+    0 0 50px #ff2d75,
+    0 0 100px #ff2d75;
+  }
+  @keyframes animate{
+    0%
+    {
+      transform: translateY(100vh) scale(0);
+    }
+    100%
+    {
+      transform: translateY(-10vh) scale(1);
+    }
+  }
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    animation: fadeIn 1s ease-in-out;
+}
+.text{
+    color: white;
+}
+/* Navbar styling  (upper bar)*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: white; /* Dark background for better contrast */
+    border: 2px solid #ffcc00; /* Border color (change as needed) */
+    border-radius: 10px; /* Optional: Makes the border rounded */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds depth */
+    color: white; /* Text color */
+}
+.logo img{
+    width: 100px;
+}
+.column {
+    display: flex;
+    gap: 15px;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align to the left */
+    gap: 15px; /* Vertical spacing between buttons */
+  }
+/* Buttons */
+.feri {
+    padding: 15px 40px;
+    /* font-size: 1rem; */
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    margin: 10px;
+    border-radius: 12px;
+    z-index: 0;
+    animation: slideIn 1s ease forwards;
+    transition: background-color 0.3s ease;
+}
+.feri::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    left: 0;
+    top: 0;  
+    border-radius: 10px; 
+}
+
+/* Glow Effect */
+.feri::before {
+    content: "";
+    background: linear-gradient(
+        45deg, 
+        #ff0000, #ff7300, #fffb00, #48ff00,
+        #00ffd5, #002bff, #ff00c8, #ff0000
+    ); /* Removed extra comma */
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 600%;
+    z-index: -1;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    filter: blur(8px);
+    animation: glowing 20s linear infinite;
+    transition: opacity .3s ease-in-out; /* Fixed transform issue */
+    border-radius: 10px;
+    opacity: 0;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+/* Hover Effect */
+.feri:hover::before {
+    opacity: 1;
+}
+
+/* Active Effects */
+.feri:active::after {
+    background: transparent;
+}
+
+.feri:active { /* Fixed typo */
+    color: #000;
+    font-weight: bold;
+}
+
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Title styling */
+ h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin: 20px 0;
+    animation: colorChange 3s infinite;
+}
+
+/* Search container styling */
+.search {
+    display: flex;
+    align-items: left;
+    padding: 8px 15px;
+    box-sizing: border-box;
+    border: 1px solid orange;
+    border-radius: 20px;
+}
+.search input{
+    width: 100%;
+    outline: none;
+    border: 0;
+    color: #222;
+    background: transparent;
+    font-size: 14px;
+    margin-right: 10px;
+}
+/* Keyframes for color cycling */
+@keyframes colorChange {
+    0%   { color: red; }
+    8%   { color: orangered; }
+    16%  { color: orange; }
+    24%  { color: gold; }
+    32%  { color: yellow; }
+    40%  { color: chartreuse; }
+    48%  { color: lime; }
+    56%  { color: cyan; }
+    64%  { color: dodgerblue; }
+    72%  { color: blue; }
+    80%  { color: indigo; }
+    88%  { color: violet; }
+    96%  { color: deeppink; }
+    100% { color: red; }
+}
+
+.element {
+    animation: colorChange 10s linear infinite;
+}
+/* Keyframe for fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframe for button slide-in effect */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* Search button */
+.search-button {
+    background-color: #0077f7;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #005bb5;
+}
+h2{
+    /*font-size: 5rem;
+    text-align: center;*/
+    text-shadow: 3px 3px 5px rgba(158, 207, 42, 0.71), -3px -3px -5px rgba(204, 255, 0, 0.666);
+}
+.teacher{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    position: relative;
+
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TigerVibez - Login & Create Account</title>
+    <link rel="stylesheet" href="Login.css">
+</head>
+
+<body>
+    <div class="login-box">
+        <div class="login-header">
+            <header>Login</header>
+        </div>
+        <form id="login-form">
+            <div class="input-box">
+                <input type="text" id="login-username" class="input-field" placeholder="Email" autocomplete="off" required>
+            </div>
+            <div class="input-box">
+                <input type="password" id="login-password" class="input-field" placeholder="Password" autocomplete="off" required>
+            </div>
+            <div class="forgot">
+                <section>
+                    <input type="checkbox" id="check">
+                    <label for="check">Remember me</label>
+                </section>
+                <section>
+                    <a href="#">Forgot password</a>
+                </section>
+            </div>
+            <div class="input-submit">
+                <button type="submit" class="submit-btn">Sign In</button>
+            </div>
+            <div class="sign-up-link">
+                <p>Don't have an account? <a href="create.html">Sign Up</a></p>
+            </div>
+        </form>
+    
+        <!-- Green Button for Help Desk -->
+        <div class="help-desk-btn-container">
+            <a href="TECH.html" class="help-desk-btn">Go to Help Desk</a>
+        </div>
+    </div>
+
+    <script>
+        // Handle Login functionality
+        document.getElementById("login-form").addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent form submission (page reload)
+
+            const username = document.getElementById("login-username").value;
+            const password = document.getElementById("login-password").value;
+            const rememberMe = document.getElementById("check").checked;
+
+            console.log("Entered Username: " + username); // Debugging line
+            console.log("Entered Password: " + password); // Debugging line
+
+            // Get stored username and password from localStorage
+            const storedUsername = localStorage.getItem("username");
+            const storedPassword = localStorage.getItem("password");
+
+            console.log("Stored Username: " + storedUsername); // Debugging line
+            console.log("Stored Password: " + storedPassword); // Debugging line
+
+            // Check if the entered credentials match stored ones
+            if (username === storedUsername && password === storedPassword) {
+                if (rememberMe) {
+                    // Store credentials in localStorage for "Remember me" feature
+                    localStorage.setItem("remembered-username", username);
+                    localStorage.setItem("remembered-password", password);
+                } else {
+                    // Clear remembered credentials if "Remember me" is not checked
+                    localStorage.removeItem("remembered-username");
+                    localStorage.removeItem("remembered-password");
+                }
+
+                alert("Login successful! Welcome to TigerVibez.");
+                window.location.href = "tigervibez.html"; // Redirect to the main page
+            } else {
+                alert("Invalid credentials. Please try again.");
+            }
+        });
+
+        // Check if the user has already logged in and remembered credentials
+        window.onload = function () {
+            const rememberedUsername = localStorage.getItem("remembered-username");
+            const rememberedPassword = localStorage.getItem("remembered-password");
+
+            if (rememberedUsername && rememberedPassword) {
+                document.getElementById("login-username").value = rememberedUsername;
+                document.getElementById("login-password").value = rememberedPassword;
+                document.getElementById("check").checked = true;
+            }
+        };
+    </script>
+</body>
+
+</html>

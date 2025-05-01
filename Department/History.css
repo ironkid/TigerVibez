@@ -1,0 +1,93 @@
+/* Title styling */
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin: 20px 0;
+    animation: colorChange 3s infinite;
+}
+/* Keyframes for color cycling */
+@keyframes colorChange {
+    0% {
+        color: blue;
+    }
+    25% {
+        color: green;
+    }
+    50% {
+        color: lightgreen;
+    }
+    75% {
+        color: orange;
+    }
+    100% {
+        color: blueviolet;
+    }
+}
+/* Search container styling */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Center the search bar vertically */
+}
+
+/* Search bar input styling */
+.search-bar {
+    padding: 15px; /* Increase padding for a larger field */
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    width: 400px; /* Make the input wider */
+}
+
+/* Search button styling */
+.search-button {
+    padding: 15px 20px;
+    font-size: 18px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+/* Button hover effect */
+.search-button:hover {
+    background-color: lightslategray;
+}
+/* Navbar styling  (upper bar)*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #4285b4;
+    color: white;
+    position: relative;
+}
+h2{
+    /*font-size: 5rem;
+    text-align: center;*/
+    text-shadow: 3px 3px 5px rgba(158, 207, 42, 0.71), -3px -3px -5px rgba(204, 255, 0, 0.666);
+}
+.teacher{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    position: relative;
+
+}
+/* buttons */
+.feri{
+    padding: 15px 50px; /*size of block*/
+    font-size: 1rem;
+    background-color: rgb(15, 131, 44);
+    color: white;
+    border-radius: 500px;/* curve of blocks*/
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.feri:hover{
+    background-color: #0077f7;
+}
